@@ -100,13 +100,16 @@
         $('#tahun_jumlah').change(function(){
             defaultJumlahTransaksi();
         })
+
+        $('#tahun_total').change(function(){
+            defaultTotalLapor();
+        })
     });
 
     function defaultJumlahTransaksi(){
         var tahun = $('#tahun_jumlah').val();
         $.get("{{ URL::to('admin/dashboard-admin/jumlah-transaksi') }}",{tahun:tahun},function(res){
             var data = JSON.parse(res);
-            console.log(data);
             setJumlahTransaksi(data);
         });
     }
@@ -154,7 +157,6 @@
         var tahun = $('#tahun_total').val();
         $.get("{{ URL::to('admin/dashboard-admin/total-lapor') }}",{tahun:tahun},function(res){
             var data = JSON.parse(res);
-            console.log(data);
             setTotalLapor(data);
         });
     }

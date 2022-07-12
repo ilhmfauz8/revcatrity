@@ -5,6 +5,21 @@
         input[readonly] {
             background-color: #e2e2e2!important;
         }
+        .badge {
+            display: inline-block;
+            padding: 0.25em 0.4em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+        }
+        .badge-success {
+            color: #fff;
+            background-color: #28a745;
+        }
     </style>
 @endsection
 
@@ -48,6 +63,8 @@
                                             <button type="button" onclick="kirim(this)"
                                                 data-item="{{ json_encode($val) }}" class="btn btn-sm btn-primary"><i
                                                     class="fas fa-paper-plane"></i></button>
+                                            @else
+                                            <span class="badge badge-success">SELESAI</span>
                                             @endif
                                             {{-- <button type="button" onclick="hapus('{{ $val->id }}')"
                                                 class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></button> --}}
@@ -324,17 +341,6 @@
 
         
 
-    </script>
-
-    {{-- flactpcik --}}
-    <script>
-    config = {
-    // minDate: "today",
-    enableTime: true,
-    minDate :new Date().fp_incr(7)
-
-    }
-    flatpickr("input[type=date]",config);
     </script>
 
     @if(Session::has('success'))

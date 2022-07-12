@@ -38,6 +38,12 @@
                 </li> --}}
                 <li class="menu-title mt-2">Apps</li>
                 <li>
+                    <a href="{{ route('penampung.dashboard') }}">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('penampung.donasi') }}">
                         <i class="mdi mdi-calendar-blank-outline"></i>
                         <span> Donasi </span>
@@ -60,7 +66,6 @@
                 <li>
                     <a href="{{ route('admin.dashboard') }}">
                         <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="badge bg-success rounded-pill float-end">9+</span>
                         <span> Dashboard </span>
                     </a>
                 </li>

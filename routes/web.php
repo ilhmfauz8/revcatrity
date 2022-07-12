@@ -83,6 +83,7 @@ Route::name('admin.')->namespace('admin')->middleware('auth:admin')->prefix('adm
 Route::name('penampung.')->namespace('penampung')->middleware('auth:penampung')->prefix('penampung')->group(function () {
     // Dashboard
     Route::get('dashboard-penampung', 'DashboardPenampungController@index')->name('dashboard');
+    Route::get('dashboard-penampung/jumlah-transaksi', 'DashboardPenampungController@jumlah_transaksi')->name('jumlah_transaksi');
 
     // Donasi
     Route::get('donasi', 'DonasiController@index')->name('donasi');

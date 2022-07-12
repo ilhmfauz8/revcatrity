@@ -181,4 +181,77 @@ class DonasiController extends Controller
         }
     }
 
+    public function index_selesai()
+    {
+        date_default_timezone_set("Asia/Bangkok");
+        if(Auth::guard('admin')->check()){
+            $id_users = Auth::guard('admin')->user()->id;
+            $datenow = date('Y-m-d H:i:s');
+            $data['donasi'] = DB::table('master_donasi')->whereDate('end_date', '<=', $datenow)->orderBy('created_at','DESC')->get();
+            $data['penampung'] = DB::table('users')->where('status', 1)->get();
+        }elseif(Auth::guard('penampung')->check()){
+            $id_users = Auth::guard('penampung')->user()->id;
+            $data['donasi'] = DB::table('master_donasi')->where('created_by',$id_users)->orderBy('created_at','DESC')->get();
+        }
+        $data['no'] = 1;
+
+        return view('admin.donasi_selesai', $data);
+    }
+
+    public function edit_selesai(Request $request)
+    {
+        try{
+            // Image
+            if($request->hasFile('bukti')){
+                $file = $request->file('bukti');
+                $destination = 'upload/bukti';
+                $name_file = uniqid() . '.' . $file->getClientOriginalExtension();
+                $file->move($destination,$name_file);
+            }else{
+                $name_file = null;
+            }
+            $data = [
+                'id_donasi'         => $request->id,
+                'deskripsi'         => $request->keterangan,
+                'bukti'             => $name_file,
+                'total'             => str_replace(',','.',$request->raised),
+                'tanggal'           => $request->tanggal
+            ];
+            DB::table('transaksi_pengeluaran_donasi')->insert($data);
+
+            return redirect()->back()->with(['success'=>'Berhasil Edit']);
+        }catch(Exception $e){
+            return redirect()->back()->with(['error'=>'Gagal Edit']);
+        }
+    }
+
+    public function hapus_selesai($id)
+    {
+        try{
+            // Delete Image In Folder
+            $donasi = DB::table('master_donasi')->where('id', $id)->first();
+            $path = public_path()."/upload/donasi/".$donasi->image;
+            if(is_file($path)){
+                @unlink($path);
+            }
+
+            // Delete Data
+            DB::table('master_donasi')->where('id', $id)->delete();
+
+            return redirect()->back()->with(['success'=>'Berhasil Delete']);
+        }catch(Exception $e){
+            return redirect()->back()->with(['error'=>'Gagal'.$e]);
+        }
+    }
+
+    public function getPenampung()
+    {
+        $created_by = $_GET['created_by'];
+        $users = DB::table('users')->select('name','nama_rek','no_rek','nama_bank')
+                ->where('id', $created_by)
+                ->first();
+
+        echo json_encode($users);
+    }
+
 }

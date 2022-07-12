@@ -101,6 +101,29 @@
                                     <input type="text" class="form-control" id="nomorwa" name="nomorwa" required>
                                 </div>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Rekening</label>
+                                    <input type="text" class="form-control" id="nama_rek" name="nama_rek" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Bank</label>
+                                    <select class="form-control" id="nama_bank" name="nama_bank" required>
+                                        <option value="" selected>-- PILIH SEMUA --</option>
+                                        <option value="BRI">BRI</option>
+                                        <option value="BNI">BNI</option>
+                                        <option value="BCA">BCA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">No. Rekening</label>
+                                    <input type="text" class="form-control" id="no_rek" name="no_rek" required>
+                                </div>
+                            </div>
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label class="form-label">Syarat & Ketentuan</label>
@@ -167,6 +190,29 @@
                                 <div class="mb-3">
                                     <label class="form-label">NomorWA</label>
                                     <input type="text" class="form-control" id="e_nomorwa" name="nomorwa" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Rekening</label>
+                                    <input type="text" class="form-control" id="e_nama_rek" name="nama_rek" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Bank</label>
+                                    <select class="form-control" id="e_nama_bank" name="nama_bank" required>
+                                        <option value="" selected>-- PILIH SEMUA --</option>
+                                        <option value="BRI">BRI</option>
+                                        <option value="BNI">BNI</option>
+                                        <option value="BCA">BCA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">No. Rekening</label>
+                                    <input type="text" class="form-control" id="e_no_rek" name="no_rek" required>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -237,6 +283,29 @@
                                 <div class="mb-3">
                                     <label class="form-label">NomorWA</label>
                                     <input type="text" class="form-control" id="v_nomorwa" name="nomorwa" readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Rekening</label>
+                                    <input type="text" class="form-control" id="v_nama_rek" name="nama_rek" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Bank</label>
+                                    <select class="form-control" id="v_nama_bank" name="nama_bank" required>
+                                        <option value="" selected>-- PILIH SEMUA --</option>
+                                        <option value="BRI">BRI</option>
+                                        <option value="BNI">BNI</option>
+                                        <option value="BCA">BCA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">No. Rekening</label>
+                                    <input type="text" class="form-control" id="v_no_rek" name="no_rek" required>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -328,6 +397,10 @@
             $('#e_maps').val(item.maps);
             $('#e_iframeUser').attr('src', item.maps);
             $('#e_ketentuan').val(item.syarat_ketentuan);
+            $('#e_nama_rek').val(item.nama_rek);
+            $('#e_nama_bank').val(item.nama_bank);
+            $('#e_no_rek').val(item.no_rek);
+
             $('#modal-edit').modal('show');
         }
 
@@ -343,6 +416,10 @@
             $('#v_maps').val(item.maps);
             $('#v_iframeUser').attr('src', item.maps);
             $('#v_ketentuan').val(item.syarat_ketentuan);
+            $('#v_nama_rek').val(item.nama_rek);
+            $('#v_nama_bank').val(item.nama_bank);
+            $('#v_no_rek').val(item.no_rek);
+
             $('#modal-view').modal('show');
         }
 

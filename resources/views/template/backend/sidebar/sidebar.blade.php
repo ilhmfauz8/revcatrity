@@ -49,20 +49,32 @@
                         <span> Laporan </span>
                     </a>
                 </li>
-                @elseif(Auth::guard('admin')->check())
-                <li class="menu-title">Navigation</li>
-                {{-- <li>
-                    <a href="{{ route('admin.dashboard') }}">
-                        <i class="mdi mdi-view-dashboard-outline"></i> --}}
-                        {{-- <span class="badge bg-success rounded-pill float-end">9+</span> --}}
-                        {{-- <span> Dashboard </span>
+                <li>
+                    <a href="{{ route('penampung.pengeluaran') }}">
+                        <i class="mdi mdi-calendar-blank-outline"></i>
+                        <span> Pengeluaran </span>
                     </a>
                 </li>
-                <li class="menu-title mt-2">Apps</li> --}}
+                @elseif(Auth::guard('admin')->check())
+                <li class="menu-title">Navigation</li>
+                <li>
+                    <a href="{{ route('admin.dashboard') }}">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span class="badge bg-success rounded-pill float-end">9+</span>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+                {{-- <li class="menu-title mt-2">Apps</li> --}}
                 <li>
                     <a href="{{ route('admin.donasi') }}">
                         <i class="mdi mdi-calendar-blank-outline"></i>
                         <span> Donasi </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.donasi_selesai') }}">
+                        <i class="mdi mdi-calendar-blank-outline"></i>
+                        <span> Donasi Selesai </span>
                     </a>
                 </li>
                 <li>

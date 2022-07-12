@@ -37,12 +37,21 @@ Route::namespace('Auth')->group(function () {
 Route::name('admin.')->namespace('admin')->middleware('auth:admin')->prefix('admin')->group(function () {
     // Dashboard
     Route::get('dashboard-admin', 'DashboardAdminController@index')->name('dashboard');
+    Route::get('dashboard-admin/jumlah-transaksi', 'DashboardAdminController@jumlah_transaksi')->name('jumlah_transaksi');
+    Route::get('dashboard-admin/total-lapor', 'DashboardAdminController@total_lapor')->name('total_lapor');
 
     // Donasi
     Route::get('donasi', 'DonasiController@index')->name('donasi');
     Route::post('donasi/tambah', 'DonasiController@tambah')->name('donasi.tambah');
     Route::post('donasi/edit', 'DonasiController@edit')->name('donasi.edit');
     Route::get('donasi/hapus/{id}', 'DonasiController@hapus')->name('donasi.hapus');
+
+    // Donasi Selesai
+    Route::get('donasi-selesai', 'DonasiController@index_selesai')->name('donasi_selesai');
+    Route::post('donasi-selesai/tambah', 'DonasiController@tambah_selesai')->name('donasi_selesai.tambah');
+    Route::post('donasi-selesai/edit', 'DonasiController@edit_selesai')->name('donasi_selesai.edit');
+    Route::get('donasi-selesai/hapus/{id}', 'DonasiController@hapus_selesai')->name('donasi_selesai.hapus');
+    Route::get('donasi-selesai/get-penampung', 'DonasiController@getPenampung')->name('donasi_selesai.getPenampung');
 
     // Laporan
     Route::get('laporan', 'LaporanController@index')->name('laporan');
@@ -85,4 +94,10 @@ Route::name('penampung.')->namespace('penampung')->middleware('auth:penampung')-
     Route::get('laporan', 'LaporanController@index')->name('laporan');
     Route::post('laporan/edit', 'LaporanController@edit')->name('laporan.edit');
     Route::get('laporan/hapus/{id}', 'LaporanController@hapus')->name('laporan.hapus');
+
+    // Laporan
+    Route::get('pengeluaran', 'PengeluaranController@index')->name('pengeluaran');
+    Route::post('pengeluaran/tambah', 'PengeluaranController@tambah')->name('pengeluaran.tambah');
+    Route::post('pengeluaran/edit', 'PengeluaranController@edit')->name('pengeluaran.edit');
+    Route::get('pengeluaran/hapus/{id}', 'PengeluaranController@hapus')->name('pengeluaran.hapus');
 });

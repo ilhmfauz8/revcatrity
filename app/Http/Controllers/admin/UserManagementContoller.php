@@ -38,6 +38,9 @@ class UserManagementContoller extends Controller
                 'nomorwa'       => $request->nomorwa,
                 'maps'          => $request->maps,
                 'syarat_ketentuan' => $request->ketentuan,
+                'nama_rek'      => $request->nama_rek,
+                'nama_bank'     => $request->nama_bank,
+                'no_rek'        => $request->no_rek,
                 'status'        => 1
             ];
             DB::table('users')->insert($data);
@@ -60,6 +63,9 @@ class UserManagementContoller extends Controller
                 'nomorwa'       => $request->nomorwa,
                 'maps'          => $request->maps,
                 'syarat_ketentuan' => $request->ketentuan,
+                'nama_rek'      => $request->nama_rek,
+                'nama_bank'     => $request->nama_bank,
+                'no_rek'        => $request->no_rek,
                 'status'        => 1
             ];
             DB::table('users')->where('id', $request->id)->update($data);

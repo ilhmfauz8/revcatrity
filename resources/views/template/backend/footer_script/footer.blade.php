@@ -96,11 +96,11 @@
 <script src="{{ asset('assets_backend/libs/jquery-knob/jquery.knob.min.js') }}"></script>
 
 <!--Morris Chart-->
-<script src="{{ asset('assets_backend/libs/morris.js06/morris.min.js') }}"></script>
+{{-- <script src="{{ asset('assets_backend/libs/morris.js06/morris.min.js') }}"></script> --}}
 <script src="{{ asset('assets_backend/libs/raphael/raphael.min.js') }}"></script>
 
 <!-- Dashboar init js-->
-<script src="{{ asset('assets_backend/js/pages/dashboard.init.js') }}"></script>
+{{-- <script src="{{ asset('assets_backend/js/pages/dashboard.init.js') }}"></script> --}}
 
 <!-- App js-->
 <script src="{{ asset('assets_backend/js/app.min.js') }}"></script>
@@ -135,6 +135,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+{{-- Highchart --}}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
 <script>

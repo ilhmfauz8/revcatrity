@@ -84,6 +84,7 @@ Route::name('penampung.')->namespace('penampung')->middleware('auth:penampung')-
     // Dashboard
     Route::get('dashboard-penampung', 'DashboardPenampungController@index')->name('dashboard');
     Route::get('dashboard-penampung/jumlah-transaksi', 'DashboardPenampungController@jumlah_transaksi')->name('jumlah_transaksi');
+    Route::get('dashboard-penampung/total-lapor', 'DashboardPenampungController@total_lapor')->name('total_lapor');
 
     // Donasi
     Route::get('donasi', 'DonasiController@index')->name('donasi');

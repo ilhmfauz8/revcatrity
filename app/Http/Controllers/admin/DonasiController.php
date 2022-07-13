@@ -215,7 +215,8 @@ class DonasiController extends Controller
                 'deskripsi'         => $request->keterangan,
                 'bukti'             => $name_file,
                 'total'             => str_replace(',','.',$request->raised),
-                'tanggal'           => $request->tanggal
+                'tanggal'           => $request->tanggal,
+                'id_penampung'      => $request->penampung
             ];
             DB::table('transaksi_pengeluaran_donasi')->insert($data);
 

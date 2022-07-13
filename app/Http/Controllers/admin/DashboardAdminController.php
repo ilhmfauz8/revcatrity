@@ -24,8 +24,9 @@ class DashboardAdminController extends Controller
         $data['now'] = date('Y');
         $data['start'] = date('Y') - 5;
         $data['end'] = date('Y') + 5;
-        $data['total_donasi'] = DB::table('transaksi')->where('transaction_status', 'settlement')->sum('gross_amount');
-        $data['total_lapor'] = DB::table('transaksi_pengeluaran_penampung')->sum('total');
+        $data['total_transaksi_donasi'] = DB::table('transaksi')->where('transaction_status', 'settlement')->sum('gross_amount');
+        $data['total_pengeluaran_penampung'] = DB::table('transaksi_pengeluaran_penampung')->sum('total');
+        $data['total_pengeluaran_admin'] = DB::table('transaksi_pengeluaran_donasi')->sum('total');
         
         return view('admin.dashboard', $data);
     }

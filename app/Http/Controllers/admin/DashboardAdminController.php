@@ -28,6 +28,10 @@ class DashboardAdminController extends Controller
         $data['total_pengeluaran_penampung'] = DB::table('transaksi_pengeluaran_penampung')->sum('total');
         $data['total_pengeluaran_admin'] = DB::table('transaksi_pengeluaran_donasi')->sum('total');
         
+        $data['no'] = 1;
+        $data['penampung'] = DB::table('users')->where('status', 1)->get();
+        $data['pengeluaran'] = DB::table('transaksi_pengeluaran_penampung')->orderBy('tanggal','DESC')->get();
+        
         return view('admin.dashboard', $data);
     }
 
@@ -89,4 +93,16 @@ class DashboardAdminController extends Controller
         ]); 
     }
 
+    public function setTable(){
+        $penampung = $_GET['penampung'];
+
+        $data = DB::table('transaksi_pengeluaran_penampung')
+                ->when($penampung, function($q, $penampung){
+                    $q->where('id_penampung', $penampung);
+                })
+                ->orderBy('tanggal','DESC')
+                ->get();
+
+        return $data;
+    }
 }

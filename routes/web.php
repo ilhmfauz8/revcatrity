@@ -39,6 +39,7 @@ Route::name('admin.')->namespace('admin')->middleware('auth:admin')->prefix('adm
     Route::get('dashboard-admin', 'DashboardAdminController@index')->name('dashboard');
     Route::get('dashboard-admin/jumlah-transaksi', 'DashboardAdminController@jumlah_transaksi')->name('jumlah_transaksi');
     Route::get('dashboard-admin/total-lapor', 'DashboardAdminController@total_lapor')->name('total_lapor');
+    Route::get('dashboard-admin/set-table', 'DashboardAdminController@setTable')->name('setTable');
 
     // Donasi
     Route::get('donasi', 'DonasiController@index')->name('donasi');

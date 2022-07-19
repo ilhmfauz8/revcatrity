@@ -105,6 +105,33 @@
                 </div>
             </div>
         </div><!-- end col -->
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mt-0">Pengeluaran Penampung</h4>
+                    <select class="form-control" id="penampung" name="penampung">
+                        <option value="" selected>Semua</option>
+                        @foreach($penampung as $val)
+                        <option value="{{ $val->id }}">{{ $val->name }}</option>
+                        @endforeach
+                    </select><br>
+                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Tanggal</th>
+                                <th>Keterangan</th>
+                                <th>Bukti</th>
+                                <th>Total (Rp)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!-- end col -->
     </div>
     <!-- end row -->
 </div>
@@ -115,6 +142,7 @@
     $(document).ready(function () {
         defaultJumlahTransaksi();
         defaultTotalLapor();
+        setTable();
 
         $('#tahun_jumlah').change(function(){
             defaultJumlahTransaksi();
@@ -122,6 +150,10 @@
 
         $('#tahun_total').change(function(){
             defaultTotalLapor();
+        })
+        
+        $('#penampung').change(function(){
+            setTable();
         })
     });
 
@@ -217,6 +249,25 @@
             },
             series: [data.series]
         });
+    }
+
+    function setTable(){
+        var penampung = $('#penampung').val();
+        var html = '';
+        $.get("{{ URL::to('admin/dashboard-admin/set-table') }}",{penampung:penampung}, function(res){
+            $.each(res, function(i, val){
+                var no = i + 1;
+                html += '<tr>';
+                html += '<td>'+no+'</td>';
+                html += '<td>'+val.tanggal+'</td>';
+                html += '<td>'+val.deskripsi+'</td>';
+                html += '<td>'+val.bukti+'</td>';
+                html += '<td>'+val.total+'</td>';
+                html += '</tr>';
+            })
+
+            $('#datatable-buttons tbody').html(html);
+        })
     }
 </script>
 @endsection
